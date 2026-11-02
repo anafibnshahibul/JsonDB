@@ -80,7 +80,12 @@ function formatSize(bytes) {
 function resolveDir() {
   let config;
   try {
-    config = { ...JsonDB.DEFAULT_CONFIG, ...JsonDB.loadConfig(process.cwd()) };
+    const stored = JsonDB.loadConfig(process.cwd());
+    config = JsonDB.validateConfig({
+      ...JsonDB.DEFAULT_CONFIG,
+      ...stored,
+      lock: { ...JsonDB.DEFAULT_CONFIG.lock, ...(stored.lock || {}) },
+    });
   } catch (err) {
     fail(err.message);
   }

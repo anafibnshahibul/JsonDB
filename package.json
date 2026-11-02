@@ -1,8 +1,14 @@
 {
   "name": "jsondb-lite-database",
-  "version": "1.0.1",
-  "description": "A tiny, zero-dependency, CLI-driven JSON database for Node.js",
+  "version": "1.1.0-beta.2",
+  "description": "A tiny, zero-dependency JSON document database for Node.js, with an optional CLI",
   "main": "lib/index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "bin": {
+    "jsondb": "bin/jsondb.js"
+  },
   "files": [
     "bin",
     "lib",
